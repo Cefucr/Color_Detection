@@ -29,7 +29,8 @@ def printCoord(nats,color):
             print(color, i + 1 , " coordinates:", nats[0][i])
         print(" ")
     elif(longer(nats) == 0):
-         pass
+        
+        pass
     else:
         print(color," coordinates:", nats[0][0],"\n")
 
@@ -43,7 +44,7 @@ camera = cv2.VideoCapture(1, cv2.CAP_DSHOW)
 
 while 1:
     #get the footage from the camera
-    ret, image = camera.read()
+    ret, footage = camera.read()
    
     #color values
     lower_blue = np.array([100, 100, 100], np.uint8)
@@ -60,10 +61,10 @@ while 1:
     upper_yellow = np.array([30, 255, 255], np.uint8)
     
     
-    b_cd = [seeColor(image, lower_blue, upper_blue)]
-    g_cd = [seeColor(image, lower_green, upper_green)]
-    r_cd = [seeColor(image, lower_red, upper_red)]
-    y_cd = [seeColor(image, lower_yellow, upper_yellow)]
+    b_cd = [seeColor(footage, lower_blue, upper_blue)]
+    g_cd = [seeColor(footage, lower_green, upper_green)]
+    r_cd = [seeColor(footage, lower_red, upper_red)]
+    y_cd = [seeColor(footage, lower_yellow, upper_yellow)]
        
     #prints the coordinates
     print("-------COORDINATES-------")
@@ -73,7 +74,7 @@ while 1:
     printCoord(r_cd,'red')
     printCoord(y_cd,'yellow')
     
-    cv2.imshow('Webcam', image)
+    cv2.imshow('Webcam', footage)
     
     if cv2.waitKey(1)==27: 
         break
